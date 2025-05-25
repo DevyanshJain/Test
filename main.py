@@ -21,7 +21,7 @@ with open("students.csv", newline="") as csvfile:
         students_data.append(row)
 
 @app.get("/api")
-def get_students(class_: list[str] = Query(default=[])):
+def get_students(class_: list[str] = Query(default=[], alias="class")):
     if class_:
         filtered = [s for s in students_data if s["class"] in class_]
         return {"students": filtered}
